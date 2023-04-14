@@ -24,11 +24,22 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-// for (let i = 1; i <= 9; i++) {
-//   var hourListEl = $('#hourList');
-//   var timeSlot = $('<div>');
+//For each of the 9 hour blocks
+for (var i = 0; i < 9; i++) {
+  var startingHour = 9;
+  var blockHour = startingHour + i;
+  var hourAdjustment = 0;
+  if (i >= 4) { //If i >= 4, then that means the time block is 1pm or later and 12 needs to be subtracted from blockHour to access the correct div id in lines 40 and 42
+    hourAdjustment = 12;
+  }
+  //If the current hour on a 24-hour clock is less than the hour on the block
+  if (dayjs().format('H') < blockHour) {
+    //Then leave the block to be its default color of green
+  } else 
+  if (dayjs().format('H') == blockHour) { //If the current hour on a 24-hour clock is equal to the hour on the block
+    $('#hour-' + (blockHour - hourAdjustment)).attr('class', 'row time-block present') //Then change the block color to red
+  } else {
+    $('#hour-' + (blockHour - hourAdjustment)).attr('class', 'row time-block past') //Else change the block to gray
+  }
+}
 
-
-
-//   hourListEl.append('timeSlot')
-// }
