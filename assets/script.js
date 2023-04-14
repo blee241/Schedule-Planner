@@ -1,7 +1,3 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
 //Adds the current day as text in the header
 var currentDayEl = $('#currentDay');
 currentDayEl.text(dayjs().format('dddd, MMMM D'));
@@ -27,3 +23,12 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+// for (let i = 1; i <= 9; i++) {
+//   var hourListEl = $('#hourList');
+//   var timeSlot = $('<div>');
+
+
+
+//   hourListEl.append('timeSlot')
+// }
