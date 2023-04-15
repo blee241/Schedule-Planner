@@ -44,11 +44,12 @@ function changeBlockColors() {
   }
 }
 
-setInterval(changeBlockColors, 60000)
+//Calls the function to change block colors and then sets an interval to update the colors every minute
+changeBlockColors();
+setInterval(changeBlockColors, 60000);
 
 //Saves text to local storage
 function saveToLocal(event) {
-  console.log(this.parentElement.children[1].value)
   localStorage.setItem(this.parentElement.getAttribute('id'), this.parentElement.children[1].value)
 }
 
@@ -72,5 +73,18 @@ hour3SaveEl.on('click', saveToLocal);
 hour4SaveEl.on('click', saveToLocal);
 hour5SaveEl.on('click', saveToLocal);
 
+for (var i = 0; i < 9; i++) {
+  var hour = 9;
+  hour += i; //hour represents the 24-hour value of the time block
+  if (i >= 4) { 
+   hour -= 12; //This subtracts 12 from hour if the hour block is 1pm or later so that the appropriate hour id can be accessed
+  }
+  $('#hour-' + hour).children('textarea').text(localStorage.getItem('hour-' + hour))
+}
+//Sets the textarea element text to xxxxx
+// $('#hour-' + hour).children('textarea').text( xxxxx )
+
+//Accesses the stored values in the local storage
+// localStorage.getItem('hour-' + hour)
 
 
